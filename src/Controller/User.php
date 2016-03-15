@@ -77,7 +77,7 @@ class User
             </form>
         ';
 
-        require_once 'layout.phtml';
+        view('layout', $content);
 
     }
 
@@ -123,7 +123,7 @@ class User
             <input type="submit" name="updatepw" value="Create User" />
         </form>';
 
-        require_once 'layout.phtml';
+        view('layout', $content);
     }
 
     public function login()
@@ -158,7 +158,7 @@ class User
             </form>
         ';
 
-        require_once('layout.phtml');
+        view('layout', $content);
 
     }
 

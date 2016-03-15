@@ -43,7 +43,7 @@ class Index
 
         $content .= '</ol>';
 
-        require 'layout.phtml';
+        view('layout', $content);
     }
 }
 

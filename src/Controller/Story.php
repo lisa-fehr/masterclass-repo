@@ -62,7 +62,7 @@ class Story
             ';
         }
 
-        require_once 'layout.phtml';
+        view('layout', $content);
 
     }
 
@@ -104,7 +104,7 @@ class Story
             </form>
         ';
 
-        require_once 'layout.phtml';
+        view('layout', $content);
     }
 
 }
