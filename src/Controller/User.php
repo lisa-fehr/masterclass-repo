@@ -4,6 +4,10 @@ namespace Masterclass\Controller;
 
 use Masterclass\Model\User as UserModel;
 
+/**
+ * Class User
+ * @package Masterclass\Controller
+ */
 class User
 {
     /**
