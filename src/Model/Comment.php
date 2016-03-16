@@ -13,7 +13,7 @@ class Comment
 
     /**
      * Comment constructor.
-     * @param $config
+     * @param array $config
      */
     public function __construct($config)
     {
@@ -25,9 +25,9 @@ class Comment
 
     /**
      * Create new comment.
-     * @param $username
-     * @param $story_id
-     * @param $comment
+     * @param string $username
+     * @param int $story_id
+     * @param string $comment
      */
     public function create($username, $story_id, $comment)
     {

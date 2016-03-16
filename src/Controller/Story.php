@@ -13,14 +13,17 @@ class Story
     protected $resource;
 
     /**
-     * Comment constructor.
-     * @param $config
+     * Story constructor.
+     * @param array $config
      */
     public function __construct($config)
     {
         $this->resource = new StoryModel($config);
     }
 
+    /**
+     * Show a story with comments.
+     */
     public function index()
     {
         $story_id = $_GET['id'];
@@ -64,6 +67,9 @@ class Story
 
     }
 
+    /**
+     * Create a new story.
+     */
     public function create()
     {
         if (!isset($_SESSION['AUTHENTICATED'])) {

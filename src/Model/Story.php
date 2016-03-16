@@ -12,8 +12,8 @@ class Story
     protected $db;
 
     /**
-     * Comment constructor.
-     * @param $config
+     * Story constructor.
+     * @param array $config
      */
     public function __construct($config)
     {
@@ -24,10 +24,10 @@ class Story
     }
 
     /**
-     * Create new comment.
-     * @param $username
-     * @param $headline
-     * @param $url
+     * Create new story.
+     * @param string $username
+     * @param string $headline
+     * @param string $url
      * @return int
      */
     public function create($username, $headline, $url)
@@ -45,7 +45,7 @@ class Story
 
     /**
      * Get story or throw an exception.
-     * @param null $story_id
+     * @param int|null $story_id
      * @return mixed|array
      * @throws \Exception
      */
@@ -67,7 +67,8 @@ class Story
     }
 
     /**
-     * @param $story_id
+     * Get a list of comments for a story.
+     * @param int $story_id
      * @return array
      */
     public function getComments($story_id)
@@ -80,8 +81,8 @@ class Story
 
     /**
      * Validate form.
-     * @param $headline
-     * @param $url
+     * @param string $headline
+     * @param string $url
      * @return bool
      */
     public function isValid($headline, $url)
