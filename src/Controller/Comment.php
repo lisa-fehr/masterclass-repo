@@ -1,21 +1,28 @@
 <?php
 
-class Comment {
-    
-    public function __construct($config) {
+namespace Masterclass\Controller;
+
+use PDO;
+
+class Comment
+{
+
+    public function __construct($config)
+    {
         $dbconfig = $config['database'];
         $dsn = 'mysql:host=' . $dbconfig['host'] . ';dbname=' . $dbconfig['name'];
         $this->db = new PDO($dsn, $dbconfig['user'], $dbconfig['pass']);
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
-    
-    public function create() {
-        if(!isset($_SESSION['AUTHENTICATED'])) {
+
+    public function create()
+    {
+        if (!isset($_SESSION['AUTHENTICATED'])) {
             die('not auth');
             header("Location: /");
             exit;
         }
-        
+
         $sql = 'INSERT INTO comment (created_by, created_on, story_id, comment) VALUES (?, NOW(), ?, ?)';
         $stmt = $this->db->prepare($sql);
         $stmt->execute(array(
@@ -25,5 +32,5 @@ class Comment {
         ));
         header("Location: /story/?id=" . $_POST['story_id']);
     }
-    
+
 }
