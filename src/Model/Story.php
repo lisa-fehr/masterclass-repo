@@ -86,7 +86,7 @@ class Story
      */
     public function isValid($headline, $url)
     {
-        return (!isset($headline) || !isset($url) || filter_var($url, FILTER_VALIDATE_URL) !== false);
+        return ! (!isset($headline) || !isset($url) || filter_var($url, FILTER_VALIDATE_URL) === false);
     }
 
 }
