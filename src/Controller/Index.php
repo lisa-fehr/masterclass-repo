@@ -3,8 +3,11 @@
 namespace Masterclass\Controller;
 
 use Masterclass\Model\Story as StoryModel;
-use PDO;
 
+/**
+ * Class Index
+ * @package Masterclass\Controller
+ */
 class Index
 {
     /**
@@ -22,6 +25,9 @@ class Index
         $this->story_resource = new StoryModel($config);
     }
 
+    /**
+     * List stories
+     */
     public function index()
     {
 

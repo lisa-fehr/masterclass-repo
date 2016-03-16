@@ -4,6 +4,10 @@ namespace Masterclass\Model;
 
 use PDO;
 
+/**
+ * Class BaseModel
+ * @package Masterclass\Model
+ */
 class BaseModel
 {
     /**

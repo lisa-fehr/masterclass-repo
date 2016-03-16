@@ -2,7 +2,6 @@
 
 namespace Masterclass\Controller;
 
-use PDO;
 use Masterclass\Model\User as UserModel;
 
 class User
@@ -22,6 +21,9 @@ class User
         $this->resource = new UserModel($config);
     }
 
+    /**
+     * Create new user.
+     */
     public function create()
     {
         $error = null;
@@ -55,6 +57,9 @@ class User
 
     }
 
+    /**
+     * Edit account.
+     */
     public function account()
     {
         $message = null;
@@ -94,13 +99,19 @@ class User
         view('layout', $content);
     }
 
+    /**
+     * Login.
+     */
     public function login()
     {
         $error = null;
         // Do the login
         if (isset($_POST['login'])) {
             try {
-                $this->resource->isValidLogin($_POST['user'], $_POST['pass']);
+                $data = $this->resource->isValidLogin($_POST['user'], $_POST['pass']);
+                session_regenerate_id();
+                $_SESSION['username'] = $data['username'];
+                $_SESSION['AUTHENTICATED'] = true;
                 header("Location: /");
                 exit;
             } catch (\Exception $e) {
@@ -121,9 +132,11 @@ class User
 
     }
 
+    /**
+     * Log out, redirect.
+     */
     public function logout()
     {
-        // Log out, redirect
         session_destroy();
         header("Location: /");
     }

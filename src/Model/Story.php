@@ -4,6 +4,10 @@ namespace Masterclass\Model;
 
 use PDO;
 
+/**
+ * Class Story
+ * @package Masterclass\Model
+ */
 class Story extends BaseModel
 {
     /**
@@ -49,6 +53,10 @@ class Story extends BaseModel
         return $story_stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Get all stories.
+     * @return array
+     */
     public function getStories()
     {
         $sql = 'SELECT * FROM story ORDER BY created_on DESC';

@@ -4,6 +4,10 @@ namespace Masterclass\Model;
 
 use PDO;
 
+/**
+ * Class User
+ * @package Masterclass\Model
+ */
 class User extends BaseModel
 {
     /**
@@ -25,6 +29,14 @@ class User extends BaseModel
         $stmt->execute($params);
     }
 
+    /**
+     * Change password.
+     * @param string $username
+     * @param string $password
+     * @param string $password_check
+     * @return string
+     * @throws \Exception
+     */
     public function updatePassword($username, $password, $password_check)
     {
         if ($this->isValidPassword($password, $password_check)) {
@@ -40,6 +52,11 @@ class User extends BaseModel
         }
     }
 
+    /**
+     * Get the user by their username.
+     * @param string $username
+     * @return array
+     */
     public function getUser($username)
     {
         $dsql = 'SELECT * FROM user WHERE username = ?';
@@ -48,6 +65,12 @@ class User extends BaseModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Check if the form is valid for a new user.
+     * @param array $post
+     * @return bool
+     * @throws \Exception
+     */
     public function isValid($post)
     {
         if (empty($post['username']) || empty($post['email']) ||
@@ -74,12 +97,25 @@ class User extends BaseModel
         return true;
     }
 
+    /**
+     * Check if the password was filled in and matches the confirmation field.
+     * @param string $password
+     * @param string $password_check
+     * @return bool
+     */
     public function isValidPassword($password, $password_check)
     {
         return (!empty($password) && !empty($password_check) &&
             $password == $password_check);
     }
 
+    /**
+     * Check that the username and password are valid.
+     * @param string $username
+     * @param string $password
+     * @return array|bool
+     * @throws \Exception
+     */
     public function isValidLogin($username, $password)
     {
         $password = md5($username . $password); // THIS IS NOT SECURE. DO NOT USE IN PRODUCTION.
@@ -87,11 +123,7 @@ class User extends BaseModel
         $stmt = $this->db->prepare($sql);
         $stmt->execute(array($username, $password));
         if ($stmt->rowCount() > 0) {
-            $data = $stmt->fetch(PDO::FETCH_ASSOC);
-            session_regenerate_id();
-            $_SESSION['username'] = $data['username'];
-            $_SESSION['AUTHENTICATED'] = true;
-            return true;
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
             throw new \Exception('Your username/password did not match.');
         }

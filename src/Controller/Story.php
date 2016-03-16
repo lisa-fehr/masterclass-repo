@@ -4,6 +4,10 @@ namespace Masterclass\Controller;
 
 use Masterclass\Model\Story as StoryModel;
 
+/**
+ * Class Story
+ * @package Masterclass\Controller
+ */
 class Story
 {
     /**

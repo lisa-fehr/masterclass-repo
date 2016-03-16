@@ -2,6 +2,10 @@
 
 namespace Masterclass\Model;
 
+/**
+ * Class Comment
+ * @package Masterclass\Model
+ */
 class Comment extends BaseModel
 {
     /**
