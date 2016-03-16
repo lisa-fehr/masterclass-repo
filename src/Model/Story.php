@@ -67,10 +67,15 @@ class Story extends BaseModel
      * @param string $headline
      * @param string $url
      * @return bool
+     * @throws \Exception
      */
     public function isValid($headline, $url)
     {
-        return ! (!isset($headline) || !isset($url) || filter_var($url, FILTER_VALIDATE_URL) === false);
+        if (empty($headline) || empty($url) || filter_var($url, FILTER_VALIDATE_URL) === false) {
+            throw new \Exception('You did not fill in all the fields or the URL did not validate.');
+        }
+
+        return true;
     }
 
 }

@@ -82,12 +82,13 @@ class Story
             $headline = $_POST['headline'];
             $url = $_POST['url'];
 
-            if ($this->resource->isValid($headline, $url)) {
+            try{
+                $this->resource->isValid($headline, $url);
                 $story_id = $this->resource->create($_SESSION['username'], $headline, $url);
                 header("Location: /story/?id=" . $story_id);
                 exit;
-            } else {
-                $error = 'You did not fill in all the fields or the URL did not validate.';
+            }catch(\Exception $e){
+                $error = $e->getMessage();
             }
         }
 
