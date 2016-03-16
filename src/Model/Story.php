@@ -49,6 +49,14 @@ class Story extends BaseModel
         return $story_stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getStories()
+    {
+        $sql = 'SELECT * FROM story ORDER BY created_on DESC';
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /**
      * Get a list of comments for a story.
      * @param int $story_id
