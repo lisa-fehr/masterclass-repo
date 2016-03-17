@@ -1,12 +1,11 @@
 <?php
 
-use Masterclass\MainController\MasterController;
-
 session_start();
 
-$config = require_once('../config.php');
+$config = require_once('../config/config.php');
 require_once '../vendor/autoload.php';
+require_once('../config/diconfig.php');
 
-$framework = new MasterController($config);
+$framework = $di->newInstance('Masterclass\MainController\MasterController');
 
 echo $framework->execute();

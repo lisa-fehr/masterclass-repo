@@ -18,11 +18,11 @@ class Comment
 
     /**
      * Comment constructor.
-     * @param array $config
+     * @param CommentModel $comment
      */
-    public function __construct($config)
+    public function __construct(CommentModel $comment)
     {
-        $this->resource = new CommentModel($config);
+        $this->resource = $comment;
     }
 
     /**
