@@ -3,6 +3,7 @@
 namespace Masterclass\Controller;
 
 use Masterclass\Model\Story as StoryModel;
+use Masterclass\Model\Comment as CommentModel;
 
 /**
  * Class Index
@@ -17,12 +18,20 @@ class Index
     protected $story_resource;
 
     /**
-     * Index constructor.
-     * @param array $config
+     * Store the comment model for this controller.
+     * @var CommentModel
      */
-    public function __construct($config)
+    protected $comment_resource;
+
+    /**
+     * Index constructor.
+     * @param StoryModel   $story
+     * @param CommentModel $comment
+     */
+    public function __construct(StoryModel $story, CommentModel $comment)
     {
-        $this->story_resource = new StoryModel($config);
+        $this->story_resource = $story;
+        $this->comment_resource = $comment;
     }
 
     /**
@@ -36,7 +45,7 @@ class Index
         $content = '<ol>';
 
         foreach ($stories as $story) {
-            $comments = $this->story_resource->getComments($story['id']);
+            $comments = $this->comment_resource->getComments($story['id']);
 
             $comment_count = count($comments);
 

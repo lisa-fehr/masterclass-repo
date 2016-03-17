@@ -17,12 +17,12 @@ class User
     protected $resource;
 
     /**
-     * Story constructor.
-     * @param array $config
+     * User constructor.
+     * @param UserModel $user
      */
-    public function __construct($config)
+    public function __construct(UserModel $user)
     {
-        $this->resource = new UserModel($config);
+        $this->resource = $user;
     }
 
     /**

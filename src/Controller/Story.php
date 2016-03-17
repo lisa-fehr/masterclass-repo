@@ -3,6 +3,7 @@
 namespace Masterclass\Controller;
 
 use Masterclass\Model\Story as StoryModel;
+use Masterclass\Model\Comment as CommentModel;
 
 /**
  * Class Story
@@ -11,18 +12,26 @@ use Masterclass\Model\Story as StoryModel;
 class Story
 {
     /**
-     * Store the model for this controller.
+     * Store the story model for this controller.
      * @var StoryModel
      */
-    protected $resource;
+    protected $story_resource;
+
+    /**
+     * Store the comment model for this controller.
+     * @var CommentModel
+     */
+    protected $comment_resource;
 
     /**
      * Story constructor.
-     * @param array $config
+     * @param StoryModel   $story
+     * @param CommentModel $comment
      */
-    public function __construct($config)
+    public function __construct(StoryModel $story, CommentModel $comment)
     {
-        $this->resource = new StoryModel($config);
+        $this->story_resource = $story;
+        $this->comment_resource = $comment;
     }
 
     /**
@@ -33,13 +42,13 @@ class Story
         $story_id = $_GET['id'];
 
         try {
-            $story = $this->resource->getStory($story_id);
+            $story = $this->story_resource->getStory($story_id);
         } catch (\Exception $e) {
             header("Location: /");
             exit;
         }
 
-        $comments = $this->resource->getComments($story['id']);
+        $comments = $this->comment_resource->getComments($story['id']);
 
         $comment_count = count($comments);
 
@@ -87,8 +96,8 @@ class Story
             $url = $_POST['url'];
 
             try{
-                $this->resource->isValid($headline, $url);
-                $story_id = $this->resource->create($_SESSION['username'], $headline, $url);
+                $this->story_resource->isValid($headline, $url);
+                $story_id = $this->story_resource->create($_SESSION['username'], $headline, $url);
                 header("Location: /story/?id=" . $story_id);
                 exit;
             }catch(\Exception $e){
