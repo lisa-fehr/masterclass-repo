@@ -2,8 +2,6 @@
 
 namespace Masterclass\Model;
 
-use PDO;
-
 /**
  * Class Story
  * @package Masterclass\Model
@@ -20,8 +18,7 @@ class Story extends BaseModel
     public function create($username, $headline, $url)
     {
         $sql = 'INSERT INTO story (headline, url, created_by, created_on) VALUES (?, ?, ?, NOW())';
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute(array(
+        $this->db->execute($sql, array(
             $headline,
             $url,
             $username,
@@ -43,14 +40,13 @@ class Story extends BaseModel
         }
 
         $story_sql = 'SELECT * FROM story WHERE id = ?';
-        $story_stmt = $this->db->prepare($story_sql);
-        $story_stmt->execute(array($story_id));
+        $story_stmt = $this->db->fetchOne($story_sql, [$story_id]);
 
         if ($story_stmt->rowCount() < 1) {
             throw new \Exception('Story not found.');
         }
 
-        return $story_stmt->fetch(PDO::FETCH_ASSOC);
+        return $story_stmt;
     }
 
     /**
@@ -60,9 +56,7 @@ class Story extends BaseModel
     public function getStories()
     {
         $sql = 'SELECT * FROM story ORDER BY created_on DESC';
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->db->fetchAll($sql);
     }
 
     /**

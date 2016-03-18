@@ -1,6 +1,10 @@
 {
   "require": {
-    "aura/di": "^3.0"
+    "aura/di": "~2.1",
+    "aura/web": "~2.0",
+    "aura/view": "~2.0",
+    "aura/filter": "2.0.*@dev",
+    "aura/accept": "2.1.0"
   },
   "autoload": {
     "psr-4": {

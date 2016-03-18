@@ -4,32 +4,90 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "08578546ef565314c831aaf997703f99",
-    "content-hash": "d051bdaa6c702be787fc2baf9c9ff54a",
+    "hash": "ad419116ffcc2333b82b99280591c477",
+    "content-hash": "6893e54607dde8e105551c128a872691",
     "packages": [
         {
-            "name": "aura/di",
-            "version": "3.0.0",
+            "name": "aura/accept",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/auraphp/Aura.Di.git",
-                "reference": "6eb1a27930103cb4eedd73456a3b9ca0d68efe41"
+                "url": "https://github.com/auraphp/Aura.Accept.git",
+                "reference": "bce57d159bbbbac724992f6a589f7070de18750c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/auraphp/Aura.Di/zipball/6eb1a27930103cb4eedd73456a3b9ca0d68efe41",
-                "reference": "6eb1a27930103cb4eedd73456a3b9ca0d68efe41",
+                "url": "https://api.github.com/repos/auraphp/Aura.Accept/zipball/bce57d159bbbbac724992f6a589f7070de18750c",
+                "reference": "bce57d159bbbbac724992f6a589f7070de18750c",
                 "shasum": ""
             },
             "require": {
-                "container-interop/container-interop": "~1.0",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "acclimate/container": "~1.0",
-                "mouf/picotainer": "~1.0"
+                "php": ">=5.3.0"
             },
             "type": "library",
+            "extra": {
+                "aura": {
+                    "type": "library",
+                    "config": {
+                        "common": "Aura\\Accept\\_Config\\Common"
+                    }
+                },
+                "branch-alias": {
+                    "dev-develop-2": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Aura\\Accept\\": "src/",
+                    "Aura\\Accept\\_Config\\": "config/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Aura.Accept Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.Accept/contributors"
+                }
+            ],
+            "description": "Provides content-negotiation tools using Accept* headers.",
+            "homepage": "https://github.com/auraphp/Aura.Accept",
+            "keywords": [
+                "accept",
+                "accept-charset",
+                "accept-encoding",
+                "accept-language",
+                "content negotiation",
+                "content type",
+                "media type"
+            ],
+            "time": "2015-01-23 15:23:41"
+        },
+        {
+            "name": "aura/di",
+            "version": "2.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/Aura.Di.git",
+                "reference": "81d5d9c602ca292a16e32001dcbd2adab5350e28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auraphp/Aura.Di/zipball/81d5d9c602ca292a16e32001dcbd2adab5350e28",
+                "reference": "81d5d9c602ca292a16e32001dcbd2adab5350e28",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "aura": {
+                    "type": "library"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Aura\\Di\\": "src/"
@@ -37,7 +95,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-2-Clause"
             ],
             "authors": [
                 {
@@ -45,7 +103,7 @@
                     "homepage": "https://github.com/auraphp/Aura.Di/contributors"
                 }
             ],
-            "description": "A serializable dependency injection container with constructor and setter injection, interface and trait awareness, configuration inheritance, and much more.",
+            "description": "Provides a dependency injection container system with native support for constructor- and setter-based injection, lazy-loading of services, and inheritable configuration of setters and constructor params.",
             "homepage": "https://github.com/auraphp/Aura.Di",
             "keywords": [
                 "container",
@@ -54,34 +112,185 @@
                 "di",
                 "di container"
             ],
-            "time": "2016-03-14 15:31:55"
+            "time": "2016-01-21 09:34:53"
         },
         {
-            "name": "container-interop/container-interop",
-            "version": "1.1.0",
+            "name": "aura/filter",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/container-interop/container-interop.git",
-                "reference": "fc08354828f8fd3245f77a66b9e23a6bca48297e"
+                "url": "https://github.com/auraphp/Aura.Filter.git",
+                "reference": "908e5740ddbb781303247939c23016b6221b30f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/container-interop/container-interop/zipball/fc08354828f8fd3245f77a66b9e23a6bca48297e",
-                "reference": "fc08354828f8fd3245f77a66b9e23a6bca48297e",
+                "url": "https://api.github.com/repos/auraphp/Aura.Filter/zipball/908e5740ddbb781303247939c23016b6221b30f6",
+                "reference": "908e5740ddbb781303247939c23016b6221b30f6",
                 "shasum": ""
             },
+            "require": {
+                "ext-libxml": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "aura/di": "~2.0"
+            },
+            "suggest": {
+                "ext-iconv": "To support UTF-8 in string-length filters.",
+                "ext-intl": "To support IDNs in email filters.",
+                "ext-mbstring": "To support UTF-8 in string-length filters."
+            },
             "type": "library",
+            "extra": {
+                "aura": {
+                    "type": "library",
+                    "config": {
+                        "common": "Aura\\Filter\\_Config\\Common"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "Interop\\Container\\": "src/Interop/Container/"
+                    "Aura\\Filter\\": "src/",
+                    "Aura\\Filter\\_Config\\": "config/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-2-Clause"
             ],
-            "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
-            "time": "2014-12-30 15:22:37"
+            "authors": [
+                {
+                    "name": "Aura.Filter Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.Filter/contributors"
+                }
+            ],
+            "description": "Filters to validate and sanitize objects and arrays.",
+            "homepage": "https://github.com/auraphp/Aura.Filter",
+            "keywords": [
+                "filter",
+                "sanitize",
+                "validate",
+                "validation",
+                "validator"
+            ],
+            "time": "2016-02-20 17:34:42"
+        },
+        {
+            "name": "aura/view",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/Aura.View.git",
+                "reference": "c7d9ca4aab74f2b1d1837b13519c5fafaded966d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auraphp/Aura.View/zipball/c7d9ca4aab74f2b1d1837b13519c5fafaded966d",
+                "reference": "c7d9ca4aab74f2b1d1837b13519c5fafaded966d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "aura/di": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "aura": {
+                    "type": "library",
+                    "config": {
+                        "common": "Aura\\View\\_Config\\Common"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Aura\\View\\": "src/",
+                    "Aura\\View\\_Config\\": "config/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Aura.View Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.View/contributors"
+                }
+            ],
+            "description": "Provides an implementation of the TemplateView and TwoStepView patterns, with support for helpers and for closures as templates, using PHP itself as the templating language.",
+            "homepage": "https://github.com/auraphp/Aura.View",
+            "keywords": [
+                "Escape",
+                "escaper",
+                "escaping",
+                "template",
+                "template view",
+                "two step view",
+                "two-step view",
+                "twostep view",
+                "view"
+            ],
+            "time": "2016-01-21 18:31:00"
+        },
+        {
+            "name": "aura/web",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/Aura.Web.git",
+                "reference": "b22ba83141384981514e2057ebe99e9a5509914f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auraphp/Aura.Web/zipball/b22ba83141384981514e2057ebe99e9a5509914f",
+                "reference": "b22ba83141384981514e2057ebe99e9a5509914f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "aura/di": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "aura": {
+                    "type": "library",
+                    "config": {
+                        "common": "Aura\\Web\\_Config\\Common"
+                    }
+                },
+                "branch-alias": {
+                    "dev-develop-2": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Aura\\Web\\": "src/",
+                    "Aura\\Web\\_Config\\": "config/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Aura.Web Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.Web/contributors"
+                }
+            ],
+            "description": "Provides web Request and Response objects for use by web controllers and actions. These are representations of the PHP web environment, not HTTP request and response objects proper.",
+            "homepage": "https://github.com/auraphp/Aura.Web",
+            "keywords": [
+                "request",
+                "response"
+            ],
+            "time": "2015-03-27 18:59:27"
         }
     ],
     "packages-dev": [
@@ -302,7 +511,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "aura/filter": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
