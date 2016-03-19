@@ -1,0 +1,74 @@
+<?php
+
+return array(
+
+  'database' => array(
+      'user' => '',
+      'pass' => '',
+      'host' => '',
+      'name' => '',
+  ),
+
+  'routes' => array(
+      '' => [
+          'class' => 'Masterclass\Controller\Index',
+          'method' => 'index',
+          'request' => 'GET'
+      ],
+      '/story' => [
+          'class' => 'Masterclass\Controller\Story',
+          'method' => 'index',
+          'request' => 'GET'
+      ],
+      '/story/create' => [
+          'class' => 'Masterclass\Controller\Story',
+          'method' => 'create',
+          'request' => 'GET'
+      ],
+      '/story/create/save' => [
+          'class' => 'Masterclass\Controller\Story',
+          'method' => 'create',
+          'request' => 'POST'
+      ],
+      '/comment/create' => [
+          'class' => 'Masterclass\Controller\Comment',
+          'method' => 'create',
+          'request' => 'POST'
+      ],
+      '/user/create' => [
+          'class' => 'Masterclass\Controller\User',
+          'method' => 'create',
+          'request' => 'GET'
+      ],
+      '/user/account' => [
+          'class' => 'Masterclass\Controller\User',
+          'method' => 'account',
+          'request' => 'GET'
+      ],
+      '/user/account/create' => [
+          'class' => 'Masterclass\Controller\User',
+          'method' => 'create',
+          'request' => 'POST'
+      ],
+      '/user/account/save' => [
+          'class' => 'Masterclass\Controller\User',
+          'method' => 'account',
+          'request' => 'POST'
+      ],
+      '/user/login/check' => [
+          'class' => 'Masterclass\Controller\User',
+          'method' => 'login',
+          'request' => 'POST'
+      ],
+      '/user/login' => [
+          'class' => 'Masterclass\Controller\User',
+          'method' => 'login',
+          'request' => 'GET'
+      ],
+      '/user/logout' => [
+          'class' => 'Masterclass\Controller\User',
+          'method' => 'logout',
+          'request' => 'GET'
+      ],
+  ),
+);

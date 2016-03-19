@@ -2,7 +2,7 @@
 
 namespace Masterclass\Model;
 
-use PDO;
+use Masterclass\Database\AbstractDb;
 
 /**
  * Class BaseModel
@@ -11,16 +11,16 @@ use PDO;
 class BaseModel
 {
     /**
-     * @var PDO
+     * @var AbstractDb
      */
     protected $db;
 
     /**
      * Set up DB.
-     * @param PDO $pdo
+     * @param AbstractDb $db
      */
-    public function __construct(PDO $pdo)
+    public function __construct(AbstractDb $db)
     {
-        $this->db = $pdo;
+        $this->db = $db;
     }
 }

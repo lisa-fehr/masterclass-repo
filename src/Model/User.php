@@ -2,8 +2,6 @@
 
 namespace Masterclass\Model;
 
-use PDO;
-
 /**
  * Class User
  * @package Masterclass\Model
@@ -25,8 +23,7 @@ class User extends BaseModel
         );
 
         $sql = 'INSERT INTO user (username, email, password) VALUES (?, ?, ?)';
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute($params);
+        $stmt = $this->db->execute($sql, $params);
     }
 
     /**
@@ -41,8 +38,7 @@ class User extends BaseModel
     {
         if ($this->isValidPassword($password, $password_check)) {
             $sql = 'UPDATE user SET password = ? WHERE username = ?';
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute(array(
+            $stmt = $this->db->execute($sql, array(
                 md5($username . $password), // THIS IS NOT SECURE.
                 $username,
             ));
@@ -60,9 +56,7 @@ class User extends BaseModel
     public function getUser($username)
     {
         $dsql = 'SELECT * FROM user WHERE username = ?';
-        $stmt = $this->db->prepare($dsql);
-        $stmt->execute(array($username));
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->db->fetchOne($dsql, [$username]);
     }
 
     /**
@@ -87,10 +81,10 @@ class User extends BaseModel
             throw new \Exception("Your passwords didn't match.");
         }
 
-        $check_sql = 'SELECT * FROM user WHERE username = ?';
-        $check_stmt = $this->db->prepare($check_sql);
-        $check_stmt->execute(array($post['username']));
-        if ($check_stmt->rowCount() > 0) {
+        $check_sql = 'SELECT COUNT(*) as count FROM user WHERE username = ?';
+        $check_stmt = $this->db->fetchOne($check_sql, array($post['username']));
+
+        if ($check_stmt['count'] > 0) {
             throw new \Exception('Your chosen username already exists. Please choose another.');
         }
 
@@ -119,11 +113,11 @@ class User extends BaseModel
     public function isValidLogin($username, $password)
     {
         $password = md5($username . $password); // THIS IS NOT SECURE. DO NOT USE IN PRODUCTION.
-        $sql = 'SELECT * FROM user WHERE username = ? AND password = ? LIMIT 1';
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute(array($username, $password));
-        if ($stmt->rowCount() > 0) {
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+        $sql = 'SELECT *, COUNT(*) as count FROM user WHERE username = ? AND password = ? LIMIT 1';
+        $stmt = $this->db->fetchOne($sql, [$username, $password]);
+
+        if ($stmt['count'] > 0) {
+            return $stmt;
         } else {
             throw new \Exception('Your username/password did not match.');
         }
