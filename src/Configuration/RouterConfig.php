@@ -2,13 +2,21 @@
 
 namespace Masterclass\Configuration;
 
-use Aura\Di\ContainerConfig;
+use Aura\Di\Config;
 use Aura\Di\Container;
 use Masterclass\Route\Get as RouteGet;
 use Masterclass\Route\Post as RoutePost;
 
-class RouterConfig extends ContainerConfig
+/**
+ * Class RouterConfig
+ * @package Masterclass\Configuration
+ */
+class RouterConfig extends Config
 {
+    /**
+     * @param Container $di
+     * @throws \Aura\Di\Exception\ServiceNotFound
+     */
     public function define(Container $di)
     {
         $config = $di->get('config');
@@ -21,7 +29,7 @@ class RouterConfig extends ContainerConfig
                 $routeObj[] = new RouteGet($path, $route['class'], $route['method']);
             }
         }
-        $di->params['Masterclass\Router'] = [
+        $di->params['Masterclass\Route\Router'] = [
             'serverVars' => $_SERVER,
             'routes' => $routeObj,
         ];

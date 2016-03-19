@@ -10,7 +10,7 @@ return array(
   ),
 
   'routes' => array(
-      '/' => [
+      '' => [
           'class' => 'Masterclass\Controller\Index',
           'method' => 'index',
           'request' => 'GET'

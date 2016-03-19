@@ -39,10 +39,10 @@ class Story extends BaseModel
             throw new \Exception('Story id is missing.');
         }
 
-        $story_sql = 'SELECT * FROM story WHERE id = ?';
+        $story_sql = 'SELECT *, COUNT(*) as count FROM story WHERE id = ?';
         $story_stmt = $this->db->fetchOne($story_sql, [$story_id]);
 
-        if ($story_stmt->rowCount() < 1) {
+        if ($story_stmt['count'] < 1) {
             throw new \Exception('Story not found.');
         }
 

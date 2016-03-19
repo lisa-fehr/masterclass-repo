@@ -13,6 +13,7 @@ class Comment extends BaseModel
      * @param string $username
      * @param int $story_id
      * @param string $comment
+     * @return bool
      */
     public function create($username, $story_id, $comment)
     {

@@ -2,11 +2,27 @@
 
 namespace Masterclass\Route;
 
+/**
+ * Class Router
+ * @package Masterclass\Route
+ */
 class Router
 {
+    /**
+     * @var array
+     */
     protected $serverVars;
+
+    /**
+     * @var array
+     */
     protected $routes = [];
 
+    /**
+     * Router constructor.
+     * @param array $serverVars
+     * @param array $routes
+     */
     public function __construct(array $serverVars, array $routes = [])
     {
         $this->serverVars = $serverVars;
@@ -23,6 +39,9 @@ class Router
         $this->routes[] = $route;
     }
 
+    /**
+     * @return string|bool
+     */
     public function findRoute()
     {
         $path = parse_url($this->serverVars['REQUEST_URI'], PHP_URL_PATH);

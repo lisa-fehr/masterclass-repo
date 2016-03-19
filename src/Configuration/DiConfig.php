@@ -2,12 +2,19 @@
 
 namespace Masterclass\Configuration;
 
-use Aura\Di\ContainerConfig;
+use Aura\Di\Config;
 use Aura\Di\Container;
-//use PDO;
 
-class DiConfig extends ContainerConfig
+/**
+ * Class DiConfig
+ * @package Masterclass\Configuration
+ */
+class DiConfig extends Config
 {
+    /**
+     * @param Container $di
+     * @throws \Aura\Di\Exception\ServiceNotFound
+     */
     public function define(Container $di)
     {
         $config = $di->get('config');
@@ -18,7 +25,6 @@ class DiConfig extends ContainerConfig
             'dsn' => $dsn,
             'user' => $db['user'],
             'pass' => $db['pass'],
-            //'options' => [PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION]
         ];
         $di->params['Masterclass\Model\BaseModel'] = [
             'db' => $di->lazyNew('Masterclass\Database\Mysql')

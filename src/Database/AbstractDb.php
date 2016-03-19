@@ -4,6 +4,10 @@ namespace Masterclass\Database;
 
 use PDO;
 
+/**
+ * Class AbstractDb
+ * @package Masterclass\Database
+ */
 abstract class AbstractDb
 {
     /**
@@ -11,6 +15,12 @@ abstract class AbstractDb
      */
     protected $pdo;
 
+    /**
+     * AbstractDb constructor.
+     * @param string $dsn
+     * @param string $user
+     * @param string $pass
+     */
     public function __construct($dsn, $user, $pass)
     {
         $pdo = new PDO($dsn, $user, $pass);
@@ -19,12 +29,30 @@ abstract class AbstractDb
         $this->pdo = $pdo;
     }
 
+    /**
+     * @param string $sql
+     * @param array $bind
+     * @return array
+     */
     abstract public function fetchOne($sql, array $bind = []);
 
+    /**
+     * @param string $sql
+     * @param array $bind
+     * @return array
+     */
     abstract public function fetchAll($sql, array $bind = []);
 
+    /**
+     * @param string $sql
+     * @param array $bind
+     * @return bool
+     */
     abstract public function execute($sql, array $bind = []);
 
+    /**
+     * @return string
+     */
     public function lastInsertId()
     {
         return $this->pdo->lastInsertId();

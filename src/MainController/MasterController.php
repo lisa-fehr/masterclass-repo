@@ -5,6 +5,10 @@ namespace Masterclass\MainController;
 use Aura\Di\Container;
 use Masterclass\Route\Router;
 
+/**
+ * Class MasterController
+ * @package Masterclass\MainController
+ */
 class MasterController
 {
     /**
@@ -38,7 +42,6 @@ class MasterController
         $call = $this->_determineControllers();
         $class = $call->getRouteClass();
         $method = $call->getRouteMethod();
-
         $o = $this->container->newInstance($class);
 
         return $o->$method();
